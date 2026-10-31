@@ -187,7 +187,7 @@ window.POLYGON = {
     { y: "2026.09", t: { ko: "집 IP 숨김", en: "Home IP hidden" }, v: { ko: "Cloudflare Tunnel · 원 서버 직접 접속 차단", en: "Cloudflare Tunnel · direct origin access blocked" } },
     { y: "2026.09", t: { ko: "외부 감시탑", en: "External watchtower" }, v: { ko: "다른 클라우드에서 감시", en: "Watched from another cloud" }, u: "https://stats.polygon.nz" },
     { y: "2026.09", t: { ko: "앱별 네트워크", en: "Per-app networks" }, v: { ko: "중계 네트워크 분리", en: "Relay networks split per app" } },
-    { y: "2026.10", t: { ko: "하드웨어 업그레이드", en: "Hardware upgrade" }, v: { ko: "CPU Ryzen 5 5500GT · 메모리 DDR4 32GB", en: "CPU Ryzen 5 5500GT · DDR4 32 GB memory" } },
+    { y: "2026.10", t: { ko: "하드웨어 업그레이드", en: "Hardware upgrade" }, v: { ko: "CPU Ryzen 5 5500GT · DDR4 32GB · NVMe 512GB", en: "CPU Ryzen 5 5500GT · DDR4 32 GB · NVMe 512 GB" } },
     { y: "2026.10", t: { ko: "24시간 송출", en: "24/7 broadcast" }, v: { ko: "클라우드에서 이전 · 나가는 연결만", en: "Moved in from the cloud · outbound only" } },
     { y: "2026.10", t: { ko: "봇 컨테이너화", en: "Bots containerised" }, v: { ko: "스크립트 → 저장소·컨테이너·관리 화면", en: "Scripts → repo, container, admin page" } },
     { y: "2026.10", t: { ko: "컨테이너 LAN 차단", en: "Containers off LAN" }, v: { ko: "LAN·VPN 차단 · 권한 상승 기본 차단", en: "LAN/VPN blocked · no privilege escalation" } }
