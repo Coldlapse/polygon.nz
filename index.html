@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polygon</title>
+  <meta name="description" content="Coldlapse가 2021년부터 직접 운영하는 홈 서버 Polygon의 구조와 운영 방식.">
+  <meta name="theme-color" content="#0a0e13">
+  <meta property="og:title" content="Polygon">
+  <meta property="og:description" content="A home server run by Coldlapse since 2021: architecture and operations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://polygon.nz/">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem("lang");
+        if (!l) l = (navigator.language || "ko").toLowerCase().indexOf("ko") === 0 ? "ko" : "en";
+        document.documentElement.setAttribute("lang", l === "en" ? "en" : "ko");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="bar">
+    <div class="wrap">
+      <a class="id" href="#"><span class="pulse" id="pulse" aria-hidden="true"></span>POLYGON</a>
+      <nav aria-label="Sections">
+        <a href="#layout" data-t="nav.layout"></a>
+        <a href="#choices" data-t="nav.choices"></a>
+        <a href="#ops" data-t="nav.ops"></a>
+        <a href="#log" data-t="nav.log"></a>
+      </nav>
+      <span class="clock" id="clock" aria-label="KST"></span>
+      <div class="toggles">
+        <button type="button" id="lang-ko">KO</button>
+        <button type="button" id="lang-en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="board"><div class="wrap">
+      <div class="board-head">
+        <div>
+          <p class="label" data-t="hero.kicker"></p>
+          <h1>Polygon</h1>
+          <p class="lede" data-t="hero.lede"></p>
+        </div>
+        <div class="readout">
+          <p class="label" data-t="board.overall"></p>
+          <p class="big" id="overall" data-s="unknown">—</p>
+          <p class="sub" id="beat"></p>
+        </div>
+      </div>
+      <ul class="signals" id="signals"></ul>
+      <p class="src" id="src"></p>
+      <ul class="glance" id="glance"></ul>
+    </div></section>
+
+    <section id="layout"><div class="wrap">
+      <h2 data-t="h.layout"></h2>
+      <p class="lead-line" data-t="layout.lead"></p>
+      <figure class="diagram">
+        <div class="diagram-scroll" id="diagram"></div>
+        <figcaption><span class="k-solid"></span><span data-t="layout.solid"></span><span class="k-dash"></span><span data-t="layout.dash"></span></figcaption>
+      </figure>
+      <ol class="paths" id="paths"></ol>
+    </div></section>
+
+    <section id="choices"><div class="wrap">
+      <h2 data-t="h.choices"></h2>
+      <ol class="choices" id="choice-list"></ol>
+    </div></section>
+
+    <section id="ops"><div class="wrap">
+      <h2 data-t="h.ops"></h2>
+      <div class="ops">
+        <dl class="sys" id="facts"></dl>
+        <dl class="specs" id="ops-list"></dl>
+      </div>
+    </div></section>
+
+    <section id="log"><div class="wrap">
+      <h2 data-t="h.log"></h2>
+      <ol class="events" id="log-list"></ol>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span><span data-t="footer.run"></span> <a href="https://coldlapse.dev">Coldlapse</a></span>
+    <a href="https://stats.polygon.nz" target="_blank" rel="noopener">stats.polygon.nz</a>
+  </div></footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
