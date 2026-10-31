@@ -142,6 +142,13 @@
       "</svg>";
   }
 
+  function renderShots() {
+    $("shots").innerHTML = D.shots.map(function (s) {
+      return '<figure><div class="frame"><img' + (s.fit ? ' class="fit"' : "") + ' src="' + s.src + '" width="' + s.w + '" height="' + s.h + '" loading="lazy" alt="' + esc(t(s.t)) + '"></div>' +
+        "<figcaption><b>" + esc(t(s.t)) + "</b><span>" + esc(t(s.v)) + "</span></figcaption></figure>";
+    }).join("");
+  }
+
   function renderPaths() {
     $("paths").innerHTML = D.paths.map(function (p, i) {
       return '<li><span class="tag">' + (i + 1) + '</span><span class="k">' + esc(t(p.k)) + '</span><span class="v">' + esc(t(p.v)) + "</span></li>";
@@ -184,7 +191,7 @@
   }
 
   function renderAll() {
-    renderStatic(); renderBoard(); renderGlance(); renderDiagram(); renderPaths(); renderChoices(); renderOps(); renderLog();
+    renderStatic(); renderBoard(); renderGlance(); renderDiagram(); renderShots(); renderPaths(); renderChoices(); renderOps(); renderLog();
   }
 
   function setLang(l) {
