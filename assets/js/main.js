@@ -6,6 +6,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var status = "loading"; // "loading" | null (failed) | watchtower answer
   var beatBase = null;    // { ago: seconds at fetch time, at: Date.now() at fetch time }
+  var loading = false, lastLoad = 0;
 
   function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function t(v) { return v == null ? "" : typeof v === "string" ? v : (v[lang] != null ? v[lang] : v.ko); }
@@ -59,6 +60,9 @@
     if (beatBase) {
       var ago = beatBase.ago + Math.floor((Date.now() - beatBase.at) / 1000);
       txt = ui("now.beat") + " " + ago + ui("now.ago");
+      // the server beats once a minute: once the next one is due, re-read so the count follows it
+      // (10 s apart while it is late, then the minute interval below once it is clearly gone)
+      if (ago >= 62 && ago < 180 && !loading && !document.hidden && Date.now() - lastLoad >= 10000) loadStatus();
     } else if (status !== "loading") {
       txt = ui("board.waiting");
     }
@@ -68,8 +72,9 @@
   function loadStatus(first) {
     if (first) { status = "loading"; renderBoard(); }
     var done = false;
+    loading = true; lastLoad = Date.now();
     var finish = function (j) {
-      if (done) return; done = true; clearTimeout(timer);
+      if (done) return; done = true; loading = false; clearTimeout(timer);
       status = j;
       beatBase = j && typeof j.beatAgoSec === "number" ? { ago: j.beatAgoSec, at: Date.now() } : null;
       renderBoard();
@@ -207,4 +212,5 @@
   setInterval(function () { tickClock(); tickBeat(); }, 1000);
   // re-read the watchtower once a minute while the tab is visible
   setInterval(function () { if (!document.hidden) loadStatus(); }, 60000);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) loadStatus(); });
 })();
